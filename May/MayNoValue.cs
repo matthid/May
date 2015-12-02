@@ -10,7 +10,12 @@ namespace Strilanc.Value {
     ///</summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DebuggerDisplay("{ToString()}")]
-    public struct MayNoValue : IMayHaveValue {
+#if MAY_INTERNAL
+    internal
+#else
+    public
+#endif
+    struct MayNoValue : IMayHaveValue {
         ///<summary>Determines if this potential value contains a value or not (it doesn't).</summary>
         public bool HasValue { get { return false; } }
         ///<summary>Returns the hash code for a lack of potential value.</summary>

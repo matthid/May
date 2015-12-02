@@ -2,7 +2,12 @@
 
 namespace Strilanc.Value {
     ///<summary>Utility methods for the generic May type.</summary>
-    public static class May {
+#if MAY_INTERNAL
+    internal
+#else
+    public
+#endif
+    static class May {
         ///<summary>
         ///A potential value containing no value. Implicitely converts to a no value of any generic May type.
         ///Note: All forms of no value are equal, including May.NoValue, May&lt;T&gt;.NoValue, May&lt;AnyOtherT&gt;.NoValue, default(May&lt;T&gt;) and new May&lt;T&gt;().

@@ -8,7 +8,12 @@ namespace Strilanc.Value {
     ///Note: Null is NOT equivalent to new May&lt;object&gt;(null) and neither is equivalent to new May&lt;string&gt;(null).
     ///</summary>
     [DebuggerDisplay("{ToString()}")]
-    public struct May<T> : IMayHaveValue, IEquatable<May<T>> {
+#if MAY_INTERNAL
+    internal
+#else
+    public
+#endif
+    struct May<T> : IMayHaveValue, IEquatable<May<T>> {
         ///<summary>
         ///A potential value containing no value.
         ///Note: All forms of no value are equal, including May.NoValue, May&lt;T&gt;.NoValue, May&lt;AnyOtherT&gt;.NoValue, default(May&lt;T&gt;) and new May&lt;T&gt;().

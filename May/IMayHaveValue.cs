@@ -11,7 +11,12 @@ namespace Strilanc.Value {
     ///Also used as the result type of the 'do action if value present' method, but only because there is no standard void or unit type.
     ///</remarks>
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public interface IMayHaveValue : IEquatable<IMayHaveValue> {
+#if MAY_INTERNAL
+    internal
+#else
+    public
+#endif
+    interface IMayHaveValue : IEquatable<IMayHaveValue> {
         ///<summary>Determines if this potential value contains a value or not.</summary>
         bool HasValue { get; }
     }

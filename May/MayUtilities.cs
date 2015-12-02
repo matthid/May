@@ -4,7 +4,12 @@ using System.Linq;
 
 namespace Strilanc.Value {
     ///<summary>Utility methods that involve May&lt;T&gt; but with a focus on other types.</summary>
-    public static class MayUtilities {
+#if MAY_INTERNAL
+    internal
+#else
+    public
+#endif
+    static class MayUtilities {
         ///<summary>Returns the value contained in the given potential value as a nullable type, returning null if there is no contained value.</summary>
         public static T? AsNullable<T>(this May<T> potentialValue) where T : struct {
             return potentialValue.Select(e => (T?)e).ElseDefault();
